@@ -1,4 +1,5 @@
-# obniz-sample
+# Hello World
+![](./img/hello_world.jpg)
 
 ## インストール
 ```bash
