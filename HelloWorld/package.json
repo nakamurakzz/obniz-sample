@@ -1,0 +1,14 @@
+{
+  "name": "obniz",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "obniz": "^3.24.0"
+  },
+  "scripts": {
+    "start": "node ./src/index.js"
+  }
+}
