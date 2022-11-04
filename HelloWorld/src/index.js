@@ -14,6 +14,8 @@ const main = async () => {
   if (connected) {
     obniz.display.clear();
     obniz.display.print("Hello World");
+    const motor = obniz.wired("DCMotor", {forward:4, back:5});
+    motor.forward();
   }
 };
 

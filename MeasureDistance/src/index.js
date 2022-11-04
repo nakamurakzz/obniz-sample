@@ -11,12 +11,13 @@ const main = async () => {
 
   const obniz = new Obniz(OBNIZ_ID);
 
-  const connected = await obniz.connectWait({ timeout: 1000 });
+  const connected = await obniz.connectWait({ timeout: 10 });
 
+  console.log(connected)
   if (connected) {
-    const led = obniz.wired("LED", {anode:10, cathode:11});
+    // const led = obniz.wired("LED", {anode:10, cathode:11});
     const hcsr04 = obniz.wired("HC-SR04", {gnd:0, echo:1, trigger:2, vcc:3});
-
+    console.log({hcsr04})
     // const alertTime = 1000 * 60 * 60 // 1 hour
     const alertTime = 1000 // 1 hour
     const seating = 1000 // 1m
@@ -32,6 +33,7 @@ const main = async () => {
       // 距離を測定
       for (let i=0; i<times; i++) { 
         const val = await hcsr04.measureWait();
+        console.log({val})
         if (val) {
           count++;
           avg += val;
@@ -66,12 +68,12 @@ const main = async () => {
         startTime = startTime == 0 ? now : startTime
 
         if(now - startTime > alertTime) {
-          led.on();
+          // led.on();
         }
       } else {
         ctx.fillText('離席', 4, 56);
         startTime = 0
-        led.off();
+        // led.off();
       }
       obniz.display.draw(ctx);
 
